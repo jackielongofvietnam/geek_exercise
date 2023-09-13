@@ -9,6 +9,12 @@ import { Users, Posts } from './db_entities/entities';
 import { PostsModule } from './posts/posts.module';
 import { PostsController } from './posts/controllers/posts/posts.controller';
 import { PostsService } from './posts/services/posts/posts.service';
+import { FollowersModule } from './followers/followers.module';
+import { FollowersController } from './followers/controllers/followers/followers.controller';
+import { Followers } from './db_entities/Followers';
+import { FollowersService } from './followers/services/followers/followers.service';
+
+
 
 @Module({
   imports: [
@@ -19,13 +25,14 @@ import { PostsService } from './posts/services/posts/posts.service';
       username: 'postgres',
       password: '0933825653',
       database: 'geek_exercise',
-      entities: [Users, Posts],
+      entities: [Users, Posts, Followers],
       synchronize: true
     }),
     UsersModule,
-    PostsModule
+    PostsModule,
+    FollowersModule
   ],
-  controllers: [AppController, UsersController, PostsController],
-  providers: [AppService, UsersService, PostsService],
+  controllers: [AppController, UsersController, PostsController, FollowersController],
+  providers: [AppService, UsersService, PostsService, FollowersService],
 })
 export class AppModule {}

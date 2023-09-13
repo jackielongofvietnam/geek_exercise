@@ -1,24 +1,19 @@
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
 
+@Entity()
 export class Posts {
-    // @PrimaryGeneratedColumn()
-    // id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    @Column({
-        type: 'varchar',
-        length: 5,
-        nullable: false
-    })
+    @Column()
     userID: string;
 
-    // @CreateDateColumn({
-    //     type: 'timestamp' 
-    // })
-    // dateCreated: Date;
-
-    @Column({
-        type: "text",
+    @CreateDateColumn({
+        type: 'timestamp'
     })
+    dateCreated: Date;
+
+    @Column()
     content: string;
 
 }

@@ -6,11 +6,10 @@ import { Post } from 'src/posts/types/Post';
 
 @Injectable()
 export class PostsService {
-
     constructor(@InjectRepository(Posts) private readonly postsRepository: Repository<Posts>) {}
 
     private postList: Post[] = [
-        {   
+        {
             userID: '123AB',
             content: 'Nothing'
         },
@@ -27,3 +26,6 @@ export class PostsService {
         }
     }
 }
+
+
+
