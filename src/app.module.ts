@@ -13,6 +13,7 @@ import { Followers } from './db_entities/Followers';
 import { FollowersService } from './followers/services/followers/followers.service';
 import { FeedModule } from './feed/feed.module';
 import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
 
 
 
@@ -35,7 +36,7 @@ import { AuthModule } from './auth/auth.module';
     FeedModule,
     AuthModule
   ],
-  controllers: [UsersController, PostsController, FollowersController],
+  controllers: [AppController, UsersController, PostsController, FollowersController],
   providers: [UsersService, PostsService, FollowersService],
 })
 export class AppModule {}
