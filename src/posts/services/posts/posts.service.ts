@@ -31,6 +31,8 @@ export class PostsService {
         const newPost = this.postsRepository.create(createPostDto);
         this.postsRepository.save(newPost);
     }
+
+    
 }
 
 

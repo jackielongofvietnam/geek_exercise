@@ -13,6 +13,7 @@ import { FollowersModule } from './followers/followers.module';
 import { FollowersController } from './followers/controllers/followers/followers.controller';
 import { Followers } from './db_entities/Followers';
 import { FollowersService } from './followers/services/followers/followers.service';
+import { FeedModule } from './feed/feed.module';
 
 
 
@@ -30,7 +31,8 @@ import { FollowersService } from './followers/services/followers/followers.servi
     }),
     UsersModule,
     PostsModule,
-    FollowersModule
+    FollowersModule,
+    FeedModule
   ],
   controllers: [AppController, UsersController, PostsController, FollowersController],
   providers: [AppService, UsersService, PostsService, FollowersService],
