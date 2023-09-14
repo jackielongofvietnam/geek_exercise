@@ -16,6 +16,22 @@ export class FollowersService {
             followerID: '456CD'
         },
         {
+            userID: '789EF',
+            followerID: '456CD'
+        },
+        {
+            userID: '123AB',
+            followerID: '101GH'
+        },
+        {
+            userID: '123AB',
+            followerID: '134IK'
+        },
+        {
+            userID: '789EF',
+            followerID: '101GH'
+        },
+        {
             userID: '456CD',
             followerID: '123AB'
         }

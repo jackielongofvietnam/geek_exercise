@@ -19,7 +19,23 @@ export class UsersService {
             id: '456CD',
             username: 'justin',
             password: '4567'
-        }
+        },
+        {
+            id: '789EF',
+            username: 'marley',
+            password: '8910'
+        },
+        {
+            id: '101GH',
+            username: 'cross',
+            password: '1112'
+        },
+        {
+            id: '134IK',
+            username: 'rick',
+            password: '1314'
+        },
+
     ] 
 
     async createUsers() {

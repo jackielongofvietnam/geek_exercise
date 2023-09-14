@@ -15,6 +15,22 @@ export class PostsService {
             content: 'Nothing'
         },
         {
+            userID: '101GH',
+            content: 'Something'
+        },
+        {
+            userID: '134IK',
+            content: 'How are you?'
+        },
+        {
+            userID: '101GH',
+            content: 'Welcome'
+        },
+        {
+            userID: '134IK',
+            content: 'Maybe'
+        },
+        {
             userID: '456CD',
             content: 'Anything'
         }
