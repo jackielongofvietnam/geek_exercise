@@ -6,24 +6,15 @@ import { Followers } from "./Followers";
 export class Users {
     
     @PrimaryColumn({
-        type: 'varchar',
         length: 5,
         nullable: false
     })
     id: string;
 
-    @Column({
-        type: 'varchar',
-        length: 100,
-        nullable: false
-    })
+    @Column({ nullable: false })
     username: string;
 
-    @Column({
-        type: 'varchar',
-        length: 100,
-        nullable: false
-    })
+    @Column({ nullable: false })
     password: string;
     
     @OneToMany(type => Posts, posts => posts.userID)

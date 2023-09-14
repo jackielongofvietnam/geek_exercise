@@ -6,10 +6,10 @@ export class Followers {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ nullable: false })
     userID: string;
 
-    @Column()
+    @Column({ nullable: false })
     followerID: string;
 
     @ManyToOne(type => Users, users => users.id)

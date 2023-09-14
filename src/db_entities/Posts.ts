@@ -6,15 +6,16 @@ export class Posts {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ nullable: false })
     userID: string;
 
     @CreateDateColumn({
-        type: 'timestamp'
+        type: 'timestamp',
+        nullable: false
     })
     dateCreated: Date;
 
-    @Column()
+    @Column({ nullable: false })
     content: string;
 
     @ManyToOne(type => Users, users => users.id)
