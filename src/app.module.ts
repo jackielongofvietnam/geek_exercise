@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './users/controllers/users/users.controller';
 import { UsersService } from './users/services/users/users.service';
@@ -14,6 +12,8 @@ import { FollowersController } from './followers/controllers/followers/followers
 import { Followers } from './db_entities/Followers';
 import { FollowersService } from './followers/services/followers/followers.service';
 import { FeedModule } from './feed/feed.module';
+import { AuthModule } from './auth/auth.module';
+
 
 
 
@@ -32,9 +32,10 @@ import { FeedModule } from './feed/feed.module';
     UsersModule,
     PostsModule,
     FollowersModule,
-    FeedModule
+    FeedModule,
+    AuthModule
   ],
-  controllers: [AppController, UsersController, PostsController, FollowersController],
-  providers: [AppService, UsersService, PostsService, FollowersService],
+  controllers: [UsersController, PostsController, FollowersController],
+  providers: [UsersService, PostsService, FollowersService],
 })
 export class AppModule {}

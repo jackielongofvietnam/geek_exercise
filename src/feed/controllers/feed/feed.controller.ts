@@ -6,10 +6,10 @@ export class FeedController {
     
     constructor(@Inject(FeedService) private readonly feedService: FeedService) {}
 
-    @Get('getFeed/:id')
-    async getFeed(@Param('id') userID: string) {  
-        const postList = await this.feedService.findPosts(userID);
-        const feed = { userID, postList };
-        return feed;
-    }
+    // @Get('getFeed/:id')
+    // async getFeed(@Param('id') userID: string) {  
+    //     const postList = await this.feedService.findPosts(userID);
+    //     const feed = { userID, postList };
+    //     return feed;
+    // }
 }

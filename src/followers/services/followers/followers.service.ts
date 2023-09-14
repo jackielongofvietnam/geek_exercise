@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Followers } from 'src/db_entities/Followers';
+import { Followers } from 'src/db_entities/entities';
 import { Follower } from 'src/followers/types/follower';
 import { createFollowerDto } from 'src/followers/dto/CreateFollowerDto';
 
