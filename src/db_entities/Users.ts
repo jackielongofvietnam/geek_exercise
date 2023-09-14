@@ -1,7 +1,10 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, JoinColumn, OneToMany } from "typeorm";
+import { Posts } from "./Posts";
+import { Followers } from "./Followers";
 
 @Entity()
 export class Users {
+    
     @PrimaryColumn({
         type: 'varchar',
         length: 5,
@@ -23,4 +26,9 @@ export class Users {
     })
     password: string;
     
+    @OneToMany(type => Posts, posts => posts.userID)
+    posts: Posts[];
+
+    @OneToMany(type => Followers, followers => followers.userID)
+    followers: Followers[]
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Users } from "./Users";
 
 @Entity()
 export class Followers {
@@ -10,4 +11,12 @@ export class Followers {
 
     @Column()
     followerID: string;
+
+    @ManyToOne(type => Users, users => users.id)
+    @JoinColumn({name: 'userID'})
+    users1: Users;
+
+    @ManyToOne(type => Users, users => users.id)
+    @JoinColumn({name: 'followerID'})
+    users2: Users;
 }

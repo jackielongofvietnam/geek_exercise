@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Followers } from 'src/db_entities/Followers';
 import { Follower } from 'src/followers/types/follower';
+import { createFollowerDto } from 'src/followers/dto/CreateFollowerDto';
 
 @Injectable()
 export class FollowersService {
@@ -18,6 +19,7 @@ export class FollowersService {
             userID: '456CD',
             followerID: '123AB'
         }
+
     ]
 
     async createFollowers() {
@@ -25,5 +27,10 @@ export class FollowersService {
             const newFollower = this.followersRepository.create(follower);
             await this.followersRepository.save(newFollower);
         }
+    }
+
+    createFollower(createFollowerDto: createFollowerDto) {
+        const newFollower = this.followersRepository.create(createFollowerDto);
+        this.followersRepository.save(newFollower);
     }
 }

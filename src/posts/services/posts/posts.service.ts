@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Posts } from 'src/db_entities/Posts';
 import { Post } from 'src/posts/types/Post';
+import { createPostDto } from 'src/posts/dto/CreatePost.dto';
 
 @Injectable()
 export class PostsService {
@@ -24,6 +25,11 @@ export class PostsService {
             const newPost = this.postsRepository.create(post);
             await this.postsRepository.save(newPost);
         }
+    }
+
+    createPost(createPostDto: createPostDto) {
+        const newPost = this.postsRepository.create(createPostDto);
+        this.postsRepository.save(newPost);
     }
 }
 

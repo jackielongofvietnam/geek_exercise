@@ -1,4 +1,5 @@
-import { Controller, Inject, Post } from '@nestjs/common';
+import { Controller, Inject, Post, UsePipes, ValidationPipe, Body } from '@nestjs/common';
+import { createPostDto } from 'src/posts/dto/CreatePost.dto';
 import { PostsService } from 'src/posts/services/posts/posts.service';
 
 @Controller('posts')
@@ -9,5 +10,11 @@ export class PostsController {
     @Post('createPosts')
     createPosts() {
         return this.postsService.createPosts();
+    }
+
+    @Post('createPost')
+    @UsePipes(ValidationPipe)
+    createPost(@Body() createPostDto: createPostDto) {
+        return this.postsService.createPost(createPostDto);
     }
 }
