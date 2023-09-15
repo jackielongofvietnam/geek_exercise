@@ -53,12 +53,8 @@ export class FollowersService {
             throw new BadRequestException('Follower record has already existed');
         }
         else {
-            try {
-                const newFollower = this.followersRepository.create(createFollowerDto);
-                return this.followersRepository.save(newFollower);
-            } catch(err) {
-                return null;
-            }         
+            const newFollower = this.followersRepository.create(createFollowerDto);
+            return await this.followersRepository.save(newFollower);      
         }
     }
 }

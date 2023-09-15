@@ -13,6 +13,8 @@ export class AuthService {
         if (user && user.password === password) {
             return user.id;
         }
-        return null;
+        else {
+            return null;
+        }
     }
 }

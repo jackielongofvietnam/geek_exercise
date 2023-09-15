@@ -43,9 +43,9 @@ export class PostsService {
         }
     }
 
-    createPost(createPostDto: createPostDto) {
+    async createPost(createPostDto: createPostDto) {
         const newPost = this.postsRepository.create(createPostDto);
-        return this.postsRepository.save(newPost);
+        return await this.postsRepository.save(newPost);
     }   
 }
 

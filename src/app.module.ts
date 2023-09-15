@@ -22,13 +22,16 @@ import { AppController } from './app.controller';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
+      //change below parameters if necessary
       host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: '0933825653',
       database: 'geek_exercise',
+      //-------------------------
       entities: [Users, Posts, Followers],
-      synchronize: true
+      synchronize: true,
+      logging: false
     }),
     UsersModule,
     PostsModule,

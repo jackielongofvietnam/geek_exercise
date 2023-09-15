@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Get, Inject, UnauthorizedException, UsePipes, ValidationPipe } from '@nestjs/common';
 import { UserAuthDto } from 'src/auth/dto/UserAuth.dto';
 import { AuthService } from 'src/auth/services/auth/auth.service';
 import { FeedService } from 'src/feed/services/feed/feed.service';
@@ -10,6 +10,7 @@ export class AuthController {
                 @Inject(FeedService) private readonly feedService: FeedService) {}
 
     @Get('login')
+    @UsePipes(ValidationPipe)
     async logIn(@Body() userAuthDto: UserAuthDto) {
         let userID = await this.authService.userAuth(userAuthDto.username, userAuthDto.password);
         if (!userID) {

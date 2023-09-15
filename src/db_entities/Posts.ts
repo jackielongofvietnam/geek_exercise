@@ -15,7 +15,7 @@ export class Posts {
     })
     dateCreated: Date;
 
-    @Column({ nullable: false })
+    @Column({ type: 'text', nullable: false })
     content: string;
 
     @ManyToOne(type => Users, users => users.id)
