@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, HttpException, HttpStatus, Inject, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { createFollowerDto } from 'src/followers/dto/CreateFollowerDto';
 import { FollowersService } from 'src/followers/services/followers/followers.service';
 
@@ -15,6 +15,11 @@ export class FollowersController {
     @Post('createFollower')
     @UsePipes(ValidationPipe)
     createFollower(@Body() createFollowerDto: createFollowerDto) {
-        return this.followersService.createFollower(createFollowerDto);
+        const check = this.followersService.createFollower(createFollowerDto);
+        console.log(check);
+        if (!check) {
+            throw new BadRequestException('Followers records data violate foreign key rules.')
+        }
+        return check;
     }
 }

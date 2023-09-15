@@ -18,10 +18,10 @@ export class FeedService {
 
     async findPosts(userID: string) {
         const userIDlist = await this.findFollowers(userID);
+        userIDlist.push(userID);
         const postList = await this.postsRepository.createQueryBuilder('posts')
                                    .where("posts.userID IN (:...userIDlist)", {userIDlist})
-                                   .getMany();
-        
+                                   .getMany();    
         postList.sort((a, b) => b.dateCreated.getTime() - a.dateCreated.getTime());                           
         return postList;
     }

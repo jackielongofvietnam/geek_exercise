@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Followers } from 'src/db_entities/entities';
@@ -45,8 +45,20 @@ export class FollowersService {
         }
     }
 
-    createFollower(createFollowerDto: createFollowerDto) {
-        const newFollower = this.followersRepository.create(createFollowerDto);
-        this.followersRepository.save(newFollower);
+    async createFollower(createFollowerDto: createFollowerDto) {
+        let userID = createFollowerDto.userID;
+        let followerID = createFollowerDto.followerID;
+        const user = await this.followersRepository.findOne({ where: { userID, followerID } })
+        if (user && user.followerID === createFollowerDto.followerID) {          
+            throw new BadRequestException('Follower record has already existed');
+        }
+        else {
+            try {
+                const newFollower = this.followersRepository.create(createFollowerDto);
+                return this.followersRepository.save(newFollower);
+            } catch(err) {
+                return null;
+            }         
+        }
     }
 }
