@@ -12,14 +12,12 @@ export class AuthController {
     @Get('login')
     @UsePipes(ValidationPipe)
     async logIn(@Body() userAuthDto: UserAuthDto) {
-        let userID = await this.authService.userAuth(userAuthDto.username, userAuthDto.password);
+        const userID = await this.authService.userAuth(userAuthDto.username, userAuthDto.password);     
         if (!userID) {
             throw new UnauthorizedException('Wrong username or password');
         }
-        else {
-            const postList = await this.feedService.findPosts(userID);
-            const feed = { userID, postList };
-            return feed;
+        else {       
+            return this.feedService.feedCreation(userID);
         }
     }
 }

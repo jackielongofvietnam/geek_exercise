@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Posts, Followers } from 'src/db_entities/entities';
 
 
+
 @Injectable()
 export class FeedService {
 
@@ -24,6 +25,12 @@ export class FeedService {
                                    .getMany();    
         postList.sort((a, b) => b.dateCreated.getTime() - a.dateCreated.getTime());                           
         return postList;
+    }
+
+    async feedCreation(userID: string) {
+        const postList = await this.findPosts(userID);
+        const feed = { userID, postList };
+        return feed;
     }
 
 }
