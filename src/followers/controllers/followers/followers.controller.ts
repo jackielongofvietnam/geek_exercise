@@ -1,4 +1,5 @@
-import { BadRequestException, Body, Controller, HttpException, HttpStatus, Inject, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, HttpException, HttpStatus, Inject, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { createFollowerDto } from 'src/followers/dto/CreateFollowerDto';
 import { FollowersService } from 'src/followers/services/followers/followers.service';
 
@@ -12,6 +13,7 @@ export class FollowersController {
         return this.followersService.createFollowers();
     }
 
+    @UseGuards(AuthGuard)
     @Post('createFollower')
     @UsePipes(ValidationPipe)
     createFollower(@Body() createFollowerDto: createFollowerDto) {

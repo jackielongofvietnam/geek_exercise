@@ -6,7 +6,7 @@ import { NextFunction, Request, Response } from "express";
 export class CreateFollowerAuthorize implements NestMiddleware {
     use(req: Request, res: Response, next: NextFunction) {
         const { authorization } = req.headers;
-        if (authorization != 'Allow') {
+        if (!authorization) {
             return res.status(403).send({ message: 'Invalid token'});
         } else {
             next();

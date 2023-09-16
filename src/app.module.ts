@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './users/controllers/users/users.controller';
 import { UsersService } from './users/services/users/users.service';
@@ -14,6 +14,7 @@ import { FollowersService } from './followers/services/followers/followers.servi
 import { FeedModule } from './feed/feed.module';
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
+import { CreateFollowerAuthorize } from './middlewares/createFollowerAuthorize';
 
 
 
@@ -42,4 +43,8 @@ import { AppController } from './app.controller';
   controllers: [AppController, UsersController, PostsController, FollowersController],
   providers: [UsersService, PostsService, FollowersService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(CreateFollowerAuthorize)
+  }
+}
