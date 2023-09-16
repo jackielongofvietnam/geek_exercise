@@ -19,6 +19,8 @@
   Endpoint: http://localhost:3000/populateDB
 
 - You can insert sample data into a single table
+  
+  => NOTE: 'users' table should be populated first to prevent foreign key constraint error
 
   Method: POST
   
