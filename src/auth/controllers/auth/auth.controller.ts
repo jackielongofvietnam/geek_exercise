@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, UnauthorizedException, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Session, UnauthorizedException, UsePipes, ValidationPipe } from '@nestjs/common';
 
 import { UserAuthDto } from 'src/auth/dto/UserAuth.dto';
 import { AuthService } from 'src/auth/services/auth/auth.service';
@@ -21,5 +21,11 @@ export class AuthController {
         const feed = await this.feedService.feedCreation(userAuth.userID);
         const finalAuth = { ...userAuth, ...feed }
         return finalAuth;
+    }
+
+    @Get('session')
+    async getSession(@Session() session: Record<string, any>) {
+        session.visits = session.visits ? session.visits + 1 : 1;
+        return session;
     }
 }
